@@ -2,17 +2,26 @@ package PackageCampings;
 
 import java.time.LocalDate;
 
-public class Plek {
+public abstract class Plek {
     private int plekNummer;
     private boolean huisdierenToegestaan;
     private LocalDate reserveringBegin;
     private LocalDate reserveringEind;
+    private int maxAantalPersonen;
     private double prijs;
     private boolean stroom;
 
     public Plek(int plekNummer, boolean huisdierenToegestaan) {
         this.plekNummer = plekNummer;
         this.huisdierenToegestaan = huisdierenToegestaan;
+    }
+
+    public int getMaxAantalPersonen() {
+        return maxAantalPersonen;
+    }
+
+    public double getPrijs() {
+        return prijs;
     }
 
     public int getPlekNummer() {
@@ -23,9 +32,6 @@ public class Plek {
         this.plekNummer = plekNummer;
     }
 
-    public boolean isHuisdierenToegestaan() {
-        return huisdierenToegestaan;
-    }
 
     public void setHuisdierenToegestaan(boolean huisdierenToegestaan) {
         this.huisdierenToegestaan = huisdierenToegestaan;
@@ -47,7 +53,14 @@ public class Plek {
         this.reserveringEind = reserveringEind;
     }
 
-    public void setReserving(){
-
+    public boolean setReserving(LocalDate startDatum, LocalDate eindDatum){
+        if (this.reserveringBegin == null || startDatum != null && eindDatum != null) {
+            this.reserveringBegin = startDatum;
+            this.reserveringEind = eindDatum;
+            return true;
+        }
+        return false;
     }
+
+    abstract void berekenprijs();
 }

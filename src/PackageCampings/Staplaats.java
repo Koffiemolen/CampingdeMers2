@@ -37,8 +37,8 @@ public class Staplaats extends Plek{
         this.stroom = stroom;
     }
 
-    public void berekenprijs(){
-        //Todo: this.prijs * prijsPerM2 = setprijs
-
+    @Override
+    public void berekenprijs() {
+        this.prijs = this.grootte * this.prijsPerM2;
     }
 }

@@ -33,7 +33,11 @@ public class Camping {
         return plekken;
     }
 
-    public void setPlekken(ArrayList<Plek> plekken) {
-        this.plekken = plekken;
+    public void voegPlekToe(Plek plek) {
+        this.plekken.add(plek);
+    }
+
+    public Plek geefPlekWeer (int i){
+        return this.plekken.get(i);
     }
 }
